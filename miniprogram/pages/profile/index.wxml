@@ -1,0 +1,51 @@
+<!-- pages/profile/index.wxml v0.6.0 -->
+<view class="container">
+  <!-- 用户信息区 -->
+  <view class="user-card">
+    <image class="avatar" src="{{userInfo.avatar}}" mode="aspectFill" />
+    <text class="nickname">{{userInfo.nickname}}</text>
+  </view>
+
+  <!-- 订阅状态卡片 -->
+  <view class="card subscription-card">
+    <view class="card-header">
+      <text class="card-title">订阅状态</text>
+      <text class="status-tag {{isSubscribed ? 'active' : 'inactive'}}">{{subscriberText}}</text>
+    </view>
+    <block wx:if="{{isSubscribed}}">
+      <view class="sub-detail">
+        <text class="sub-plan">{{planLabel}}</text>
+        <text class="sub-expire">{{expireText}}</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="sub-empty">
+        <text class="sub-hint">解锁无限排盘与AI解读</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 购买按钮 -->
+  <view class="card purchase-card">
+    <text class="card-title">开通订阅</text>
+    <view class="btn-group">
+      <view class="btn btn-monthly" bindtap="onSubscribe" data-plan="monthly">
+        <text class="btn-title">月度订阅</text>
+        <text class="btn-price">¥9.80/月</text>
+      </view>
+      <view class="btn btn-yearly" bindtap="onSubscribe" data-plan="yearly">
+        <text class="btn-title">年度订阅</text>
+        <text class="btn-price">¥98.00/年</text>
+        <text class="btn-badge">省¥19.60</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="card menu-card">
+    <view class="menu-item" bindtap="goHistory">
+      <text class="menu-label">历史记录</text>
+      <text class="menu-arrow">></text>
+    </view>
+  </view>
+</view>

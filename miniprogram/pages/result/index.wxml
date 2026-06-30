@@ -1,0 +1,118 @@
+<!-- pages/result/index.wxml v0.7.0 -->
+<!-- 1:1 复刻 result-page-preview-3.html -->
+
+<view class="page">
+
+  <!-- 1. 命盘 -->
+  <view class="mingpan-section">
+    <view class="section-stamp section-stamp-mingpan">玄机子·命盘</view>
+    <view class="four-pillars">
+      <view class="pillar-card" wx:for="{{pillars}}" wx:key="pos">
+        <view class="pillar-box">
+          <text class="gan-zhi">{{item.ganZhi}}</text>
+          <text class="cang-gan">{{item.cangGan}}</text>
+          <text class="shi-shen">{{item.shiShen}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 2. 五行 -->
+  <view class="wuxing-section">
+    <view class="section-stamp section-stamp-wuxing">五行·契</view>
+    <canvas
+      type="2d"
+      id="wuxingCanvas"
+      class="wuxing-canvas"
+    ></canvas>
+  </view>
+
+  <!-- 3. 大运 -->
+  <view class="dayun-section">
+    <view class="section-stamp section-stamp-dayun">大运·流年</view>
+    <scroll-view class="dayun-scroll" scroll-x enable-flex>
+      <view class="dayun-track">
+        <view class="timeline-line"></view>
+        <view
+          wx:for="{{dayunNodes}}"
+          wx:key="index"
+          class="dayun-node"
+        >
+          <view class="node-dot {{item.active ? 'node-active' : ''}}"></view>
+          <text class="node-label">{{item.label}}</text>
+          <text class="node-age">{{item.age}}岁</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 4. 运势 -->
+  <view class="yunshi-section">
+    <view class="section-stamp section-stamp-yunshi">今日·运势</view>
+    <view class="fan-container {{fanExpanded ? 'fan-expanded' : ''}}" bindtap="onFanTap">
+      <view class="fan-leaf fan-leaf-1"><view class="fan-leaf-content">宜祈福</view></view>
+      <view class="fan-leaf fan-leaf-2"><view class="fan-leaf-content">忌开工</view></view>
+      <view class="fan-leaf fan-leaf-3"><view class="fan-leaf-content">吉色·赤</view></view>
+      <view class="fan-leaf fan-leaf-4"><view class="fan-leaf-content">旺方位·南</view></view>
+      <view class="fan-pivot"></view>
+    </view>
+    <text class="fan-hint">👆 点击折扇展开 / 合拢</text>
+  </view>
+
+  <!-- 5. 姻缘 -->
+  <view class="yinyuan-section">
+    <view class="section-stamp section-stamp-yinyuan">姻缘·缘</view>
+    <view class="fortune-text">{{yinyuanText}}</view>
+  </view>
+
+  <!-- 6. 财运 -->
+  <view class="caiyun-section">
+    <view class="section-stamp section-stamp-caiyun">财运·禄</view>
+    <view class="fortune-text">{{caiyunText}}</view>
+  </view>
+
+  <!-- 7. 解读 -->
+  <view class="interpret-section">
+    <view class="section-stamp section-stamp-jiedu">玄机子·解</view>
+    <view class="preview-text">{{previewText}}</view>
+
+    <!-- 卷帘遮罩 -->
+    <view class="mask-veil {{unlocked ? 'veil-unlocked' : 'veil-locked'}}">
+      <view class="veil-top"></view>
+      <view class="veil-content">
+        <text class="veil-hint">恭请玄机子启示</text>
+        <view class="jade-bi-btn {{unlocked ? 'bi-unlocked' : ''}}" bindtap="onUnlock">
+          <view class="bi-text">
+            <text class="bi-line1">{{unlocked ? '已启' : '恭请'}}</text>
+            <text class="bi-line2">玄机子</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 完整解读 -->
+    <view class="full-text {{unlocked ? 'text-visible' : 'text-hidden'}}">
+      <text>{{fullText}}</text>
+    </view>
+  </view>
+
+  <!-- 6. 底部工具栏 -->
+  <view class="bottom-toolbar">
+    <view class="wooden-plaque" bindtap="onSaveRecord">
+      <view class="rope"></view>
+      <text class="plaque-char">录</text>
+      <text class="plaque-label">存录</text>
+    </view>
+    <view class="wooden-plaque" bindtap="onShareRecord">
+      <view class="rope"></view>
+      <text class="plaque-char">傳</text>
+      <text class="plaque-label">传示</text>
+    </view>
+    <view class="wooden-plaque" bindtap="onAskMaster">
+      <view class="rope"></view>
+      <text class="plaque-char">問</text>
+      <text class="plaque-label">问师</text>
+    </view>
+  </view>
+
+</view>

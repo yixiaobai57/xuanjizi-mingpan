@@ -1,0 +1,327 @@
+/* pages/paipan/index.wxss v0.3.0 */
+/* 1:1 复刻 paipan-page-preview-2-2.html CSS */
+
+page {
+  --ink-black: #2c1810;
+  --ink-dark: #3d251e;
+  --ink-brown: #6b4c3b;
+  --gold: #c9a95c;
+  --gold-light: #e8d4a0;
+  --paper: #f5efe6;
+  --paper-dark: #ebe1d0;
+  --cinnabar: #c23a2b;
+  --cinnabar-light: #e05a4a;
+  --jade: #5b8c5a;
+
+  background-color: #f5efe6;
+  font-family: 'KaiTi', 'STKaiti', 'Noto Serif SC', 'Songti SC', serif;
+  color: var(--ink-black);
+  padding-bottom: 100px;
+}
+
+.page {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ===== 品牌头 ===== */
+.brand-header {
+  text-align: center;
+  padding: 60px 20px 24px;
+  position: relative;
+}
+.brand-title-wrap {
+  display: inline-block;
+  position: relative;
+}
+.brand-title {
+  font-size: 72rpx;
+  font-weight: 700;
+  letter-spacing: 24rpx;
+  color: var(--ink-black);
+  line-height: 1.2;
+}
+.brand-stamp {
+  position: absolute;
+  top: -16rpx;
+  right: -64rpx;
+  font-size: 20rpx;
+  color: #fff;
+  background: var(--cinnabar);
+  padding: 2rpx 8rpx;
+  letter-spacing: 0;
+  border-radius: 2rpx;
+  line-height: 1.2;
+  transform: rotate(8deg);
+  transform-origin: top right;
+}
+.brand-sub {
+  font-size: 24rpx;
+  color: var(--ink-brown);
+  letter-spacing: 12rpx;
+  margin-top: 8rpx;
+  opacity: 0.6;
+}
+.brand-divider {
+  width: 80rpx;
+  height: 2rpx;
+  background: var(--ink-dark);
+  margin: 32rpx auto 0;
+  opacity: 0.15;
+}
+
+/* ===== 表单容器 ===== */
+.form-container {
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 64rpx;
+}
+
+/* ===== 日期选择 ===== */
+.date-section {
+  display: flex;
+  gap: 24rpx;
+}
+.date-left {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+.date-right {
+  flex: 2;
+  background: var(--paper-dark);
+  border: 2rpx solid var(--ink-dark);
+  border-radius: 8rpx;
+  padding: 32rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320rpx;
+  position: relative;
+}
+.preview-ganzhi {
+  font-size: 36rpx;
+  letter-spacing: 8rpx;
+  font-weight: 600;
+  color: var(--ink-dark);
+  line-height: 1.5;
+}
+.preview-label {
+  font-size: 24rpx;
+  color: var(--ink-brown);
+  margin-top: 16rpx;
+  opacity: 0.6;
+  letter-spacing: 4rpx;
+}
+
+/* 滚动选择器 */
+.scroll-picker {
+  background: var(--paper);
+  border: 2rpx solid var(--ink-dark);
+  border-radius: 8rpx;
+  padding: 24rpx 28rpx;
+  display: flex;
+  align-items: center;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.scroll-picker:active {
+  border-color: var(--ink-brown);
+  transform: scale(0.98);
+}
+.picker-label {
+  font-size: 24rpx;
+  color: var(--ink-brown);
+  opacity: 0.6;
+  letter-spacing: 4rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+  width: 44rpx;
+  text-align: center;
+}
+.picker-value-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.3;
+}
+.picker-value-ganzhi {
+  font-size: 36rpx;
+  font-weight: 600;
+  letter-spacing: 8rpx;
+  color: var(--ink-dark);
+}
+.picker-value-number {
+  font-size: 24rpx;
+  color: var(--ink-brown);
+  opacity: 0.65;
+  letter-spacing: 2rpx;
+  margin-top: 2rpx;
+  font-family: 'Courier New', Courier, monospace;
+}
+.picker-arrow {
+  font-size: 20rpx;
+  color: var(--ink-brown);
+  margin-left: 20rpx;
+  opacity: 0.35;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ===== 时辰选择 ===== */
+.section-label {
+  font-size: 24rpx;
+  color: var(--ink-brown);
+  letter-spacing: 6rpx;
+  margin-bottom: 24rpx;
+  opacity: 0.7;
+  text-align: center;
+}
+.shichen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16rpx;
+}
+.shichen-tile {
+  padding: 20rpx 8rpx;
+  background: var(--paper);
+  border: 2rpx solid var(--ink-dark);
+  border-radius: 8rpx;
+  text-align: center;
+  transition: all 0.2s;
+  font-size: 30rpx;
+  letter-spacing: 4rpx;
+  color: var(--ink-dark);
+  position: relative;
+  box-sizing: border-box;
+}
+.shichen-tile:active {
+  transform: scale(0.96);
+}
+.shi-time {
+  display: block;
+  font-size: 18rpx;
+  color: var(--ink-brown);
+  opacity: 0.5;
+  letter-spacing: 0;
+  margin-top: 6rpx;
+}
+.shichen-selected {
+  background: var(--cinnabar);
+  color: #fff;
+  border-color: var(--cinnabar);
+  box-shadow: 0 2rpx 12rpx rgba(194,58,43,0.35);
+}
+.shichen-selected .shi-time {
+  color: rgba(255,255,255,0.75);
+  opacity: 1;
+}
+
+/* ===== 性别选择 ===== */
+.gender-row {
+  display: flex;
+  gap: 40rpx;
+  justify-content: center;
+}
+.gender-seal {
+  width: 208rpx;
+  height: 208rpx;
+  border: 6rpx solid var(--ink-dark);
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  background: var(--paper);
+  position: relative;
+  box-sizing: border-box;
+}
+.seal-char {
+  font-size: 64rpx;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--ink-dark);
+  transition: color 0.3s;
+}
+.seal-label {
+  font-size: 22rpx;
+  color: var(--ink-brown);
+  opacity: 0.5;
+  margin-top: 12rpx;
+  letter-spacing: 4rpx;
+  transition: color 0.3s, opacity 0.3s;
+}
+.seal-active {
+  border-color: var(--cinnabar);
+  background: #fff;
+  box-shadow: 0 0 0 4rpx var(--cinnabar), 0 4rpx 24rpx rgba(194,58,43,0.2);
+}
+.seal-active .seal-char {
+  color: var(--cinnabar);
+}
+.seal-active .seal-label {
+  color: var(--cinnabar);
+  opacity: 0.8;
+}
+
+/* ===== 排盘按钮 ===== */
+.submit-section {
+  text-align: center;
+  padding: 16rpx 0;
+}
+.submit-seal {
+  width: 360rpx;
+  height: 136rpx;
+  background: var(--cinnabar);
+  border: none;
+  color: #fff;
+  font-size: 44rpx;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 16rpx;
+  position: relative;
+  box-shadow: 0 6rpx 24rpx rgba(194,58,43,0.3), inset 0 2rpx 0 rgba(255,255,255,0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8rpx;
+  padding: 0;
+  line-height: normal;
+}
+.submit-seal::after {
+  box-sizing: border-box;
+}
+button.submit-seal[disabled] {
+  opacity: 0.45;
+}
+.submit-press {
+  transform: scale(0.95) !important;
+  box-shadow: 0 2rpx 8rpx rgba(194,58,43,0.3) !important;
+}
+.seal-sub {
+  display: block;
+  font-size: 20rpx;
+  letter-spacing: 8rpx;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 4rpx;
+}
+
+/* ===== 底部水印 ===== */
+.footer-watermark {
+  text-align: center;
+  padding: 80rpx 40rpx 48rpx;
+  position: relative;
+}
+.footer-copyright {
+  font-size: 20rpx;
+  color: var(--ink-brown);
+  opacity: 0.3;
+  letter-spacing: 6rpx;
+  display: block;
+}

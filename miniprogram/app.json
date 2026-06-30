@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/paipan/index",
+    "pages/result/index",
+    "pages/profile/index",
+    "pages/history/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "玄机算命",
+    "navigationBarBackgroundColor": "#f5efe6",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5efe6",
+    "backgroundTextStyle": "light"
+  },
+  "sitemapLocation": "sitemap.json"
+}

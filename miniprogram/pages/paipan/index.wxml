@@ -1,0 +1,123 @@
+<!-- pages/paipan/index.wxml v0.3.0 -->
+<!-- 1:1 复刻 paipan-page-preview-2-2.html -->
+
+<view class="page">
+
+  <!-- 品牌头部 -->
+  <view class="brand-header">
+    <view class="brand-title-wrap">
+      <text class="brand-title">玄机子</text>
+      <text class="brand-stamp">印</text>
+    </view>
+    <text class="brand-sub">命理推演</text>
+    <view class="brand-divider"></view>
+  </view>
+
+  <!-- 表单容器 -->
+  <view class="form-container">
+
+    <!-- 日期选择区 -->
+    <view class="date-section">
+      <view class="date-left">
+        <!-- 年 -->
+        <picker mode="selector" range="{{yearData}}" range-key="label" value="{{yearIndex}}" bindchange="onYearChange">
+          <view class="scroll-picker">
+            <text class="picker-label">年</text>
+            <view class="picker-value-wrap">
+              <text class="picker-value-ganzhi">{{yearGanZhi}}</text>
+              <text class="picker-value-number">{{yearNumber}}</text>
+            </view>
+            <text class="picker-arrow">▼</text>
+          </view>
+        </picker>
+        <!-- 月 -->
+        <picker mode="selector" range="{{monthData}}" range-key="label" value="{{monthIndex}}" bindchange="onMonthChange">
+          <view class="scroll-picker">
+            <text class="picker-label">月</text>
+            <view class="picker-value-wrap">
+              <text class="picker-value-ganzhi">{{monthGanZhi}}</text>
+              <text class="picker-value-number">{{monthNumber}}</text>
+            </view>
+            <text class="picker-arrow">▼</text>
+          </view>
+        </picker>
+        <!-- 日 -->
+        <picker mode="selector" range="{{dayData}}" range-key="label" value="{{dayIndex}}" bindchange="onDayChange">
+          <view class="scroll-picker">
+            <text class="picker-label">日</text>
+            <view class="picker-value-wrap">
+              <text class="picker-value-ganzhi">{{dayGanZhi}}</text>
+              <text class="picker-value-number">{{dayNumber}}</text>
+            </view>
+            <text class="picker-arrow">▼</text>
+          </view>
+        </picker>
+      </view>
+      <!-- 实时命式预览 -->
+      <view class="date-right">
+        <text class="preview-ganzhi">{{yearGanZhi}} {{monthGanZhi}} {{dayGanZhi}}</text>
+        <text class="preview-label">{{yearNumber}} · {{monthNumber}} · {{dayNumber}}</text>
+      </view>
+    </view>
+
+    <!-- 时辰选择 -->
+    <view class="shichen-section">
+      <view class="section-label">选择时辰</view>
+      <view class="shichen-grid">
+        <view
+          wx:for="{{shichenList}}"
+          wx:key="shi"
+          class="shichen-tile {{hourIndex === index ? 'shichen-selected' : ''}}"
+          data-index="{{index}}"
+          bindtap="onShiTap"
+        >
+          <text>{{item.shi}}</text>
+          <text class="shi-time">{{item.range}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 性别选择 -->
+    <view class="gender-section">
+      <view class="section-label">性别</view>
+      <view class="gender-row">
+        <view
+          class="gender-seal {{gender === 'male' ? 'seal-active' : ''}}"
+          data-gender="male"
+          bindtap="onGenderTap"
+        >
+          <text class="seal-char">乾</text>
+          <text class="seal-label">男</text>
+        </view>
+        <view
+          class="gender-seal {{gender === 'female' ? 'seal-active' : ''}}"
+          data-gender="female"
+          bindtap="onGenderTap"
+        >
+          <text class="seal-char">坤</text>
+          <text class="seal-label">女</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 排盘按钮 -->
+    <view class="submit-section">
+      <button
+        class="submit-seal"
+        bindtap="onSubmit"
+        disabled="{{submitting}}"
+        hover-class="submit-press"
+      >
+        <text>{{submitting ? '推演中…' : '排盘'}}</text>
+        <text class="seal-sub" wx:if="{{!submitting}}">推演命局</text>
+      </button>
+    </view>
+
+  </view>
+
+  <!-- 底部水印 -->
+  <view class="footer-watermark">
+    <text class="footer-copyright">玄机子 · 命理推演</text>
+  </view>
+
+</view>

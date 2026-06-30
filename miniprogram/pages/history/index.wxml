@@ -1,0 +1,43 @@
+<!-- pages/history/index.wxml v1.0.0 -->
+<view class="container">
+  <view class="header">
+    <text class="title">历史记录</text>
+    <text class="subtitle" wx:if="{{list.length}}">共 {{total}} 条排盘记录</text>
+  </view>
+
+  <block wx:if="{{list.length}}">
+    <view class="list">
+      <view
+        class="record-card"
+        wx:for="{{list}}"
+        wx:key="_id"
+        bindtap="goDetail"
+        data-id="{{item._id}}"
+      >
+        <view class="card-top">
+          <text class="day-master">{{item.dayMaster || '未知日主'}}</text>
+          <text class="time">{{item.createdAtStr}}</text>
+        </view>
+        <view class="card-meta">
+          <text class="meta-text">{{item.gender || '未知'}} · {{item.birth || ''}}</text>
+        </view>
+        <view class="card-preview">
+          <text class="preview-text">{{item.preview}}</text>
+        </view>
+        <view class="card-arrow">></view>
+      </view>
+    </view>
+
+    <view class="load-more" wx:if="{{hasMore}}">
+      <text class="load-btn" bindtap="loadMore">加载更多</text>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="empty">
+      <text class="empty-icon">--</text>
+      <text class="empty-text">暂无排盘记录</text>
+      <text class="empty-hint">完成一次排盘后，记录将自动保存</text>
+    </view>
+  </block>
+</view>
